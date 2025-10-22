@@ -41,5 +41,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
-          path: dist/  # Змініть на папку, куди зберігається ваш білд (може бути build/, dist/, out/ тощо)
+          path: dist/  
           retention-days: 30  # Скільки днів зберігати артефакт
