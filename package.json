@@ -1,0 +1,21 @@
+{
+  "name": "hello-world-project",
+  "version": "1.0.0",
+  "description": "Simple Hello World project with CI/CD pipeline",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "if not exist dist mkdir dist && copy index.js dist\\index.js && echo Build completed successfully!",
+    "test": "node index.js && echo Test passed!"
+  },
+  "keywords": [
+    "hello-world",
+    "nodejs",
+    "ci-cd"
+  ],
+  "author": "Hlib Smogorzhevskyi",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

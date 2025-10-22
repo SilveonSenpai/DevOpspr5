@@ -1,0 +1,45 @@
+name: CI Pipeline
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    steps:
+      # 1. Завантажити код репозиторію
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      # 2. Установити Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  
+      
+      # 3. Встановити залежності
+      - name: Install dependencies
+        run: npm install
+      
+      # 4. Запустити білд-процес
+      - name: Build project
+        run: npm run build
+      
+      # 5. Запустити тест файлу
+      - name: Run test
+        run: npm test
+      
+      # 6. Перевірити, що білд завершився без помилок
+      # (якщо попередній крок завершився з помилкою, workflow зупиниться автоматично)
+      - name: Verify build success
+        run: echo "Build completed successfully!"
+      
+      # 7. Зберегти результат білду як артефакт
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: dist/  # Змініть на папку, куди зберігається ваш білд (може бути build/, dist/, out/ тощо)
+          retention-days: 30  # Скільки днів зберігати артефакт
