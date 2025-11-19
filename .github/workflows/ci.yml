@@ -67,4 +67,4 @@ jobs:
           pm2 start npm --name "app" -- start
           pm2 save
           EOF
-         shell: bash
+        shell: bash
